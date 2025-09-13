@@ -3,42 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI > Diplom: Mening Hikoyam</title>
+    <title>Diplom Kerak Emas: AI Bilan Haqiqiy Dasturchi Bo'lish</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #111827;
-            --card-bg: #1F2937;
-            --primary-accent: #F59E0B; /* Amber/Gold */
-            --text-color: #D1D5DB;
-            --heading-color: #FFFFFF;
-            --border-color: #374151;
+            --bg-color: #0A0A0A;
+            --primary-accent: #00e5ff; /* Cyan Accent */
+            --text-color: #F5F5F5;
+            --text-secondary: #A0A0A0;
+            --card-bg: #1A1A1A;
+            --border-color: #333333;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.8;
+            line-height: 1.7;
         }
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        h1, h2, h3 {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            color: #fff;
+        }
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .highlight { color: var(--primary-accent); }
+        
         /* Header */
         header {
-            background: rgba(17, 24, 39, 0.8);
+            background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: fixed;
@@ -52,153 +59,134 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--heading-color);
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
             text-decoration: none;
         }
         .cta-button {
             background: var(--primary-accent);
-            color: #111827;
+            color: #000;
             padding: 10px 25px;
-            border-radius: 8px;
+            border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            font-weight: 700;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
         .cta-button:hover {
             transform: scale(1.05);
-            opacity: 0.9;
-        }
-        
-        /* Section Fade-in Animation */
-        section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+            background: #00c4d4;
         }
 
         /* Hero Section */
         .hero {
-            padding-top: 150px;
-            padding-bottom: 120px;
-            text-align: center;
-            min-height: 70vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            text-align: center;
+            padding-top: 100px;
         }
         .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 20px auto 0;
+            color: var(--text-secondary);
+        }
+
+        /* General Section Styling */
+        .section-title {
+            text-align: center;
             font-size: clamp(2.5rem, 6vw, 4rem);
-            color: var(--heading-color);
-            line-height: 1.2;
-            max-width: 800px;
+            margin-bottom: 60px;
         }
-        
-        /* Story Sections */
-        .story-card {
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Problem Section */
+        .problem-card {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
-            margin-bottom: 40px;
         }
-        .story-card h2 {
-            font-size: 1.8rem;
-            color: var(--heading-color);
-            margin-bottom: 20px;
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
-        .story-card .icon {
+        .problem-card h3::before {
+            content: '❌';
             margin-right: 15px;
-            color: var(--primary-accent);
-            width: 32px;
-            height: 32px;
+            color: var(--danger-color);
         }
-        .story-card p, .story-card ul {
-            font-size: 1.1rem;
-        }
-        .story-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .story-card li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 10px;
-        }
-        .story-card li::before {
-            content: '🚀'; /* Rocket emoji for list items */
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .tool-highlight {
-            font-weight: 600;
-            color: var(--primary-accent);
-        }
-        
-        /* Takeaway Section */
-        .takeaway {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
+
+        /* Comparison Section */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 8px;
+            overflow: hidden;
             border: 1px solid var(--border-color);
         }
-        .takeaway blockquote {
-            font-size: 1.5rem;
+        .comparison-col { padding: 30px; }
+        .comparison-col h3 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+        .comparison-col ul { list-style: none; }
+        .comparison-col ul li { margin-bottom: 20px; display: flex; align-items: flex-start; }
+        .comparison-col ul li::before { margin-right: 15px; font-size: 1.5rem; line-height: 1.5; }
+        
+        .col-uni { background-color: var(--card-bg); }
+        .col-uni h3 { color: var(--text-secondary); }
+        .col-uni ul li::before { content: '⛔️'; color: var(--danger-color); }
+        
+        .col-ai { background-color: #101D1D; }
+        .col-ai h3 { color: var(--primary-accent); }
+        .col-ai ul li::before { content: '✅'; color: var(--success-color); }
+
+        /* How-To Section */
+        .how-to-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .how-to-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-accent); }
+        .how-to-card .example {
+            background: #0A0A0A;
+            border-left: 3px solid var(--primary-accent);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 5px 5px 0;
             font-style: italic;
-            color: var(--heading-color);
-            line-height: 1.5;
-            margin: 0;
-            border: none;
-            padding: 0;
+            color: var(--text-secondary);
         }
-        .takeaway p {
-            margin-top: 20px;
-            font-weight: 600;
-            color: var(--primary-accent);
-            font-size: 1.1rem;
-        }
+        .how-to-card .example strong { color: var(--text-color); }
 
         /* CTA Section */
         .final-cta {
+            background: linear-gradient(45deg, #001f22, #003a40);
+            border: 1px solid var(--primary-accent);
             text-align: center;
+            padding: 80px 20px;
+            border-radius: 10px;
         }
-        .final-cta h2 {
-            font-size: 2rem;
-            color: var(--heading-color);
-            margin-bottom: 30px;
-        }
-        .final-cta .cta-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-        }
+        .final-cta h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        .final-cta p { max-width: 600px; margin: 20px auto 40px; }
+        .final-cta .cta-button { padding: 15px 40px; font-size: 1.2rem; }
         
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-            font-size: 0.9rem;
-            color: #9CA3AF;
-        }
+        /* Footer */
+        footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #777; }
 
         @media (max-width: 768px) {
-            section { padding: 60px 0; }
-            .hero { padding-top: 120px; padding-bottom: 80px; }
-            .story-card { padding: 30px; }
-            .story-card h2 { font-size: 1.5rem; }
-            .story-card p, .story-card ul { font-size: 1rem; }
-            .takeaway blockquote { font-size: 1.2rem; }
-            .final-cta h2 { font-size: 1.5rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .col-uni { border-bottom: 1px solid var(--border-color); }
         }
     </style>
 </head>
@@ -206,89 +194,112 @@
 
     <header>
         <nav class="navbar container">
-            <a href="#" class="logo">Mening AI Hikoyam</a>
-            <a href="#cta" class="cta-button">Bog'lanish</a>
+            <a href="#" class="logo">VIBEHUB</a>
+            <a href="#cta" class="cta-button">Boshlash</a>
         </nav>
     </header>
 
-    <main class="container">
-        <section class="hero visible">
-            <h1>“AI menga diplomdan ko‘ra ko‘proq foyda berdi”</h1>
-        </section>
-
-        <section id="problem">
-            <div class="story-card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
-                    Muammo: Nazariya ko'p, Amaliyot yo'q
-                </h2>
-                <p>
-                    Men universitetda 4 yil o‘qidim, lekin real hayotda ishlashni boshlaganimda juda ko‘p narsani bilmasligimni his qildim. Nazariya ko‘p edi, amaliyot esa yetarli emas edi.
-                </p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>AI MENGA DIPLOMDAN KO'RA <span class="highlight">KO'PROQ FOYDA BERDI</span></h1>
+                <p>Universitetda 4 yil sarflagan vaqtim, AI bilan 3 oyda erishgan natijalarim oldida hech narsa bo'lib qoldi.</p>
             </div>
         </section>
 
-        <section id="solution">
-             <div class="story-card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 14.5M14.25 3.104c.251.023.501.05.75.082M19.8 14.5L14.25 10m-8.687 4.5h13.374M14.25 10l4.286 4.286" /></svg>
-                    Kutilmagan Yechim: Sun'iy Intellekt
-                </h2>
-                <p>
-                    Keyin men AI’dan foydalanishni boshladim. <span class="tool-highlight">ChatGPT</span>, <span class="tool-highlight">GitHub Copilot</span>, <span class="tool-highlight">Claude</span> kabi vositalar menga kod yozishni, xatolarni tez topishni va murakkab tushunchalarni oson tushunishni o‘rgatdi.
-                </p>
+        <section id="diploma-is-shit">
+            <div class="container">
+                <h2 class="section-title">NEGA DIPLOM SHUNCHAKI <span class="highlight">QOG'OZ?</span></h2>
+                <div class="grid-3">
+                    <div class="problem-card">
+                        <h3>4 Yillik Vaqt Isrofi</h3>
+                        <p>Siz 4 yil umringizni sarflaysiz. Bu vaqt ichida texnologiyalar 4 marta o'zgaradi. Natijada siz o'qishni bitirganingizda bilimlaringiz allaqachon eskirgan bo'ladi.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Amaliyotsiz Nazariya</h3>
+                        <p>"Nazariya koʻp... Amaliyot esa yetarli emas". Universitet sizni real hayotga tayyorlamaydi. Siz faqat kitobdagi kodlarni yodlaysiz, lekin real loyiha qila olmaysiz.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Keraksiz Xarajat</h3>
+                        <p>Kontrakt, yo'l haqi, vaqt — bularning hammasi katta xarajat. Xuddi shu pulga siz eng zamonaviy kompyuter va pullik AI vositalarini sotib olib, 10 barobar tezroq o'rganishingiz mumkin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comparison">
+            <div class="container">
+                <h2 class="section-title">UNIVERSITET vs. <span class="highlight">AI MENTOR</span></h2>
+                <div class="comparison-grid">
+                    <div class="comparison-col col-uni">
+                        <h3>UNIVERSITET</h3>
+                        <ul>
+                            <li><strong>Dars Jadvali:</strong> Qotib qolgan, siz unga bo'ysunasiz.</li>
+                            <li><strong>Ma'lumotlar:</strong> Eskirgan, 1-2 yilda bir yangilanadi.</li>
+                            <li><strong>Amaliyot:</strong> Minimal yoki umuman yo'q.</li>
+                            <li><strong>Narxi:</strong> $2,000+ va 4 yil umr.</li>
+                            <li><strong>Natija:</strong> Portfolio o'rniga qog'oz diplom.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col col-ai">
+                        <h3>AI MENTOR (VIBE CODING)</h3>
+                        <ul>
+                            <li><strong>Dars Jadvali:</strong> Sizga moslashadi, 24/7 ishlaydi.</li>
+                            <li><strong>Ma'lumotlar:</strong> Har soniyada yangilanadi.</li>
+                            <li><strong>Amaliyot:</strong> Cheksiz, real loyihalar.</li>
+                            <li><strong>Narxi:</strong> Deyarli tekin.</li>
+                            <li><strong>Natija:</strong> Ish beruvchiga ko'rsatadigan real loyihalar.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <section id="how-to-use-ai">
+            <div class="container">
+                <h2 class="section-title">AI'DAN QANDAY <span class="highlight">FOYDALANISH KERAK?</span></h2>
+                <div class="grid-3">
+                    <div class="how-to-card">
+                        <h3>AI - Shaxsiy Mentor</h3>
+                        <p>Murakkab mavzuni tushunmadingizmi? AI'dan oddiy misollar bilan, turli xil usullarda tushuntirib berishini so'rang. U hech qachon charchamaydi.</p>
+                        <div class="example"><strong>Masalan:</strong> "JavaScriptdagi 'closures' nima? Menga 5 yoshli bolaga tushuntirgandek, o'yinchoq qutisi misolida tushuntirib ber."</div>
+                    </div>
+                    <div class="how-to-card">
+                        <h3>AI - Kod Generator</h3>
+                        <p>G'oyangizni yoki kerakli funksiyani so'z bilan ayting, AI sizga tayyor kodini yozib beradi. Siz faqat tahlil qilib, o'rganasiz va loyihangizga moslaysiz.</p>
+                         <div class="example"><strong>Masalan:</strong> "Reactda forma (input va button) komponentini yaratib ber. Formani yuborganda ma'lumotlarni konsolga chiqarsin."</div>
+                    </div>
+                    <div class="how-to-card">
+                        <h3>AI - Xatolar Tuzatuvchi</h3>
+                        <p>Soatlab vaqtingizni oladigan xatolarni topish uchun AI'ga murojaat qiling. U soniyalar ichida muammoni topib, yechimini ko'rsatib beradi.</p>
+                         <div class="example"><strong>Masalan:</strong> *(Xato berayotgan kodingizni tashlaysiz)* "Bu kodda qanday xato bor va uni qanday to'g'rilash mumkin? Nima uchun xato bo'lganini ham tushuntir."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section id="result">
-             <div class="story-card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.18a14.98 14.98 0 00-5.84 7.38m5.84 2.58a14.98 14.98 0 017.38 5.84m-13.22 0a14.98 14.98 0 01-5.84-7.38A14.98 14.98 0 019.63 2.18a14.98 14.98 0 015.84 7.38m-5.84-2.58a6 6 0 00-7.38-5.84m13.22 0a6 6 0 00-7.38 5.84m7.38 5.84a6 6 0 01-5.84 7.38" /></svg>
-                    Natija: Haqiqiy Ko'nikmalar
-                </h2>
-                <ul>
-                    <li>2-3 oy ichida men mustaqil ravishda loyihalar qila boshladim.</li>
-                    <li>Intervyularda o‘zimni ancha ishonchli his qildim.</li>
-                    <li>AI menga nazariyadan ko‘ra ko‘proq amaliy ko‘nikmalar berdi.</li>
-                </ul>
+            <div class="container">
+                <h2 class="section-title">NATIJA: 3 OYDA <span class="highlight">MUSTAQIL DASTURCHIGA</span> AYLANDIM</h2>
             </div>
         </section>
 
-        <section id="takeaway">
-            <div class="takeaway">
-                <blockquote>
-                    “Diplom yomon emas, lekin AI sizni real hayotda tezroq o‘stiradi.”
-                </blockquote>
-                <p>— To‘g‘ri vosita – eng yaxshi ustoz</p>
+        <section id="cta">
+            <div class="container">
+                <div class="final-cta">
+                    <h2>NAZARIYAGA VAQTINGIZNI SOVURMANG.</h2>
+                    <p>Eski metodlarni unuting. Agar siz ham bir necha oy ichida real loyihalar qila oladigan darajaga chiqishni istasangiz, AI'dan foydalanishni hoziroq boshlang.</p>
+                    <a href="https://vibehub-uz.vercel.app/" target="_blank" class="cta-button">QANDAY BOSHLASHNI O'RGANISH</a>
+                </div>
             </div>
-        </section>
-
-        <section class="final-cta" id="cta">
-            <h2>Siz ham AI’dan foydalanishni boshladingizmi?</h2>
-            <a href="https://vibehub-uz.vercel.app/" target="_blank" class="cta-button">Qanday Boshlashni O'rganing</a>
         </section>
     </main>
     
     <footer>
         <div class="container">
-            <p>&copy; 2025. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2025 VibeHub. Eskirgan ta'limga qarshi.</p>
         </div>
     </footer>
-    
-    <script>
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.15
-        });
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+
 </body>
 </html>
